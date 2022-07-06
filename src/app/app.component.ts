@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FoodService } from './services/food.service';
 
 @Component({
   selector: 'app-root',
@@ -9,13 +8,8 @@ import { FoodService } from './services/food.service';
 export class AppComponent {
   title = 'angular-mongoDB-app';
 
-  constructor(private foodService: FoodService) {
+  constructor() {
     
   }
-  getTableNames(): void {
-    this.foodService.getTableName();
-  }
-  getSubtableNames(): void {
-    this.foodService.getSubtableNames()
-  }
+  
 }
