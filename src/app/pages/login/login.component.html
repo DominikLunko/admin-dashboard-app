@@ -1,0 +1,51 @@
+  <div class="login-card mt-5 p-4">
+    <mat-card-header class="row-center">
+      <mat-card-title>Login</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form class="example-form" #loginForm="ngForm">
+        <div class="example-full-width" cellspacing="0">
+          <div>
+            <input
+              class="full-width p-2 mt-2 mb-2"
+              matInput
+              placeholder="Email"
+              [(ngModel)]="email"
+              name="email"
+              #emailControl="ngModel"
+              required
+            />
+          </div>
+          <div>
+            <input
+              class="full-width p-2 mt-2 mb-2"
+              matInput
+              placeholder="Password"
+              [(ngModel)]="password"
+              type="password"
+              name="password"
+              #passwordControl="ngModel"
+              required
+            />
+          </div>
+        </div>
+        <mat-card-actions>
+          <button
+            mat-raised-button
+            sm
+            grey
+            [disabled]="loginForm.invalid"
+            type="submit"
+            (click)="login()"
+            color="accent"
+          >
+            Login
+          </button>
+        </mat-card-actions>
+      </form>
+      <!--<mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner> -->
+    </mat-card-content>
+    <div class="text-center">
+      <a routerLink="/register">Create account</a>
+    </div>
+  </div>

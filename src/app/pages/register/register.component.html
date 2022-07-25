@@ -1,0 +1,84 @@
+  <div class="login-card mt-5 p-4">
+    <mat-card-header class="row-center">
+      <mat-card-title>Register</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form class="example-form" #loginForm="ngForm">
+        <div class="example-full-width" cellspacing="0">
+          <div>
+            <input
+              class="full-width p-2 mt-2 mb-2"
+              matInput
+              placeholder="First name"
+              [(ngModel)]="firstName"
+              name="firstname"
+              #firstNameControl="ngModel"
+              required
+            />
+          </div>
+          <div>
+            <input
+              class="full-width p-2 mt-2 mb-2"
+              matInput
+              placeholder="Last name"
+              [(ngModel)]="lastName"
+              name="lastname"
+              #lastNameControl="ngModel"
+              required
+            />
+          </div>
+          <div>
+            <input
+              class="full-width p-2 mt-2 mb-2"
+              matInput
+              placeholder="Email"
+              [(ngModel)]="email"
+              name="email"
+              #emailControl="ngModel"
+              required
+            />
+          </div>
+          <div>
+            <input
+              class="full-width p-2 mt-2 mb-2"
+              matInput
+              placeholder="Password"
+              [(ngModel)]="password"
+              type="password"
+              name="password"
+              #passwordControl="ngModel"
+              required
+            />
+          </div>
+          <div>
+            <input
+              class="full-width p-2 mt-2 mb-2"
+              matInput
+              placeholder="Confirm password"
+              [(ngModel)]="confirmPassword"
+              type="password"
+              name="confirmPassword"
+              #confirmPasswordControl="ngModel"
+              required
+            />
+          </div>
+        </div>
+        <mat-card-actions>
+          <button
+            mat-raised-button
+            sm
+            grey
+            type="submit"
+            (click)="register()"
+            color="accent"
+          >
+            Register
+          </button>
+        </mat-card-actions>
+      </form>
+      <!--<mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner> -->
+    </mat-card-content>
+    <div class="text-center">
+      <a routerLink="/login">Log In</a>
+    </div>
+  </div>

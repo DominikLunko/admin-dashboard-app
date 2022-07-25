@@ -1,35 +1,16 @@
-<div>
-  <nav style="display: flex; align-items: center;">
-    <h2 class="mx-3 mt-3 mb-0">NAVBAR</h2>
-    <div class="mx-5 mt-3">
-      <mat-tab-group class="tab-group" mat-align-tabs="start">
-        <!--  *ngFor="let sequence of sequencesForSelectedScope" [label]="sequence" -->
-        <mat-tab>
-          <ng-template mat-tab-label>
-            <span class="tab-index">1</span>
-            <p class="mb-0 mx-2">PLANOVI TRENINGA</p>
-          </ng-template>
-        </mat-tab>
-        <mat-tab>
-          <ng-template mat-tab-label>
-            <span class="tab-index">2</span>
-            <p class="mb-0 mx-2">PLANOVI PREHRANE</p>
-          </ng-template>
-        </mat-tab>
-        <mat-tab>
-          <ng-template mat-tab-label>
-            <span class="tab-index">3</span>
-            <p class="mb-0 mx-2">PREPORUKE</p>
-          </ng-template>
-        </mat-tab>
-        <mat-tab>
-          <ng-template mat-tab-label>
-            <span class="tab-index">3</span>
-            <p class="mb-0 mx-2">MOJI PLANOVI</p>
-          </ng-template>
-        </mat-tab>
-      </mat-tab-group>
+<!-- CUSTOM SPINNER COMPONENT -->
+<app-custom-spinner></app-custom-spinner>
+
+<!-- NAVBAR -->
+<app-navbar></app-navbar>
+
+<!-- STEPPER -->
+
+<app-stepper *ngIf="showStepper"></app-stepper>
+
+<!-- BODY -->
+    <div class="container"
+         [ngStyle]="{'max-width': showStepper ? '1700px' : '500px' }">
+        <router-outlet></router-outlet>
     </div>
-  </nav>
-</div>
 
