@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 import { User } from 'src/app/models/user';
 import { DataStateService } from 'src/app/services/data-state.service';
 import { UserService } from 'src/app/services/user.service';
@@ -9,7 +10,9 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnDestroy {
+
+  private destroySub = new Subject<void>();
 
   user!: User | null;
   constructor(private userService: UserService,
@@ -24,6 +27,10 @@ export class NavbarComponent implements OnInit {
         this.user = null;
       }
     })
+  }
+  ngOnDestroy(): void {
+    this.destroySub.next();
+    this.destroySub.complete();
   }
   redirectToLogin(): void {
     this.dataStateService.currentUrl.next('login');

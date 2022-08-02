@@ -1,0 +1,51 @@
+<h1>{{data.title}}</h1>
+<form>
+  <div class="row">
+    <mat-form-field appearance="fill" class="p-2">
+      <mat-label>Age</mat-label>
+      <input type="number" 
+             [(ngModel)]="data.user.age"
+             matInput
+             name="ageControl"
+             placeholder="Ex. 25">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="p-2">
+        <mat-label>Weight</mat-label>
+        <input type="number" 
+               [(ngModel)]="data.user.weight"
+               matInput
+               name="weightControl"
+               placeholder="Enter your weight">
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="p-2">
+        <mat-label>Height</mat-label>
+        <input type="number" 
+               [(ngModel)]="data.user.height"
+               name="heightControl"
+               matInput
+               placeholder="Enter your height">
+      </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field appearance="fill">
+      <mat-label>Gender</mat-label>
+      <mat-select  name="genderControl" [(ngModel)]="data.user.gender">
+        <mat-option *ngFor="let gender of gender_list" [value]="gender">
+          {{gender}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Activity level</mat-label>
+      <mat-select name="activityLevelControl" [(ngModel)]="data.user.activity_level">
+        <mat-option *ngFor="let item of activity_level_list" [value]="item.key">
+          {{item.value}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+      <mat-card-actions>
+        <button class="mt-1 mx-2" mat-raised-button sm color="primary" (click)="saveData()">SAVE</button>
+        <button class="mt-1 mx-2" mat-raised-button sm color="accent" (click)="dialogRef.close(false)">CANCEL</button>
+      </mat-card-actions>
+  </form>

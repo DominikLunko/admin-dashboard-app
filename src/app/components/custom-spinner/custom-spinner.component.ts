@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
 import { DataStateService } from 'src/app/services/data-state.service';
 
 @Component({
@@ -6,8 +7,10 @@ import { DataStateService } from 'src/app/services/data-state.service';
   templateUrl: './custom-spinner.component.html',
   styleUrls: ['./custom-spinner.component.scss']
 })
-export class CustomSpinnerComponent implements OnInit {
+export class CustomSpinnerComponent implements OnInit, OnDestroy {
 
+  private destroySub = new Subject<void>();
+  
   loading!: boolean;
   constructor(
       private dataStateService: DataStateService
@@ -18,5 +21,8 @@ export class CustomSpinnerComponent implements OnInit {
       this.loading = loading;
     })
   }
-
+  ngOnDestroy(): void {
+    this.destroySub.next();
+    this.destroySub.complete();
+  }
 }

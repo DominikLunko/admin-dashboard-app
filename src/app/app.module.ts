@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
@@ -16,7 +16,13 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatIconModule} from '@angular/material/icon';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatInputModule} from '@angular/material/input';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatSelectModule} from '@angular/material/select';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 // IMPORT COMPONENTS AND PAGES
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -29,8 +35,7 @@ import { AnalyticsComponent } from './pages/analytics/analytics.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { CustomSpinnerComponent } from './components/custom-spinner/custom-spinner.component';
-import { JwtInterceptor } from './interceptors/jwt.interceptor';
-
+import { PersonalDataPopupComponent } from './pages/personal-data/personal-data-popup/personal-data-popup.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +49,7 @@ import { JwtInterceptor } from './interceptors/jwt.interceptor';
     LoginComponent,
     RegisterComponent,
     CustomSpinnerComponent,
+    PersonalDataPopupComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,7 +64,13 @@ import { JwtInterceptor } from './interceptors/jwt.interceptor';
     MatButtonModule,
     MatProgressSpinnerModule,
     MatTooltipModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatIconModule,
+    MatInputModule,
+    MatDialogModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatExpansionModule
   ],
   providers: [
   ],

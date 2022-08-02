@@ -12,9 +12,11 @@
         </ng-template>
         <!-- If user logged in -->
         <div *ngIf="user; else login">
-            <h3>{{user.name}}</h3>
+            <div class="user-name">
+                <h3>{{user.name}}</h3>
+                <mat-icon (click)="logout()">power_settings_new</mat-icon>
+            </div>
             <h4>{{user.email}}</h4>
-            <h3 (click)="logout()">Log Out</h3>
         </div>
     </div>
 </div>

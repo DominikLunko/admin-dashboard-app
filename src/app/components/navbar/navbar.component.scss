@@ -1,35 +1,51 @@
 .navbar {
-    height: 90px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-bottom: 16px;
-    border-bottom: 1px solid whitesmoke;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 16px;
+  border-bottom: 1px solid whitesmoke;
 }
 
 .logo-wrapper {
-    color: whitesmoke;
-    padding: 8px;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
+  color: whitesmoke;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 
-    h1 {
-        margin: 0px !important;
-        font-size: 32px;
-    }
+  h1 {
+    margin: 0px !important;
+    font-size: 32px;
+  }
 }
 .basic-user-info {
+  position: absolute;
+  right: 3%;
+  display: flex;
+  align-items: center;
+  height: 100%;
+
+  h3 {
+     cursor: pointer;
+  }
+  
+  h3,
+  h4 {
+    color: whitesmoke;
+    margin: 0px !important;
+  }
+}
+.user-name {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  mat-icon,
+  h3 {
+    color: whitesmoke;
+  }
+  mat-icon {
     cursor: pointer;
-    position: absolute;
-    right: 3%;
-    display: flex;
-    align-items: center;
-    height: 100%;
-
-    h3, h4 {
-        color: whitesmoke;
-        margin: 0px !important;
-    }
-
+  }
 }

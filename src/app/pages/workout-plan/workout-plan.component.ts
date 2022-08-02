@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataStateService } from 'src/app/services/data-state.service';
 
 @Component({
   selector: 'app-workout-plan',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WorkoutPlanComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dataStateService: DataStateService) { }
 
   ngOnInit(): void {
+    setTimeout(() => {
+      this.dataStateService.selectedStepIndex.next(3);
+    })
   }
 
 }

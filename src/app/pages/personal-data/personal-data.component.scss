@@ -1,0 +1,109 @@
+.welcome-title {
+    color: whitesmoke;
+    font-size: 28px;
+    text-align: center;
+}
+.basic-personal-data {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-evenly;
+    border: 1px solid whitesmoke;
+    margin-left: 16px;
+    margin-right: 16px;
+
+    p {
+        color: whitesmoke;
+        font-size: 16px;
+        text-decoration: underline;
+        // font-weight: bold;
+    }
+}
+
+.bmi-data-wrapper {
+    border: 1px solid whitesmoke;
+    position: relative;
+    flex: 0.5;
+
+    h1 {
+        width: fit-content;
+        position: absolute;
+        top: -26px;
+        left: 28px;
+        background: #393A3B;
+        padding: 8px;
+        font-size: 22px;
+        color: whitesmoke;
+        text-transform: capitalize;
+    }
+}
+.ideal-weight {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.bmi-data {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-evenly;
+
+    span {
+        display: flex;
+        color: whitesmoke;
+        font-size: 16px;
+    }
+    p {
+        color: whitesmoke;
+        font-size: 16px;
+        font-weight: bold;
+    }
+}
+.personal-data-content {
+    min-height: 650px;
+}
+
+h1, h3, p {
+    color: whitesmoke
+}
+h3 {
+    text-decoration: underline;
+}
+
+.info-wrapper {
+    position: relative;
+    border: 1px solid lightgray;
+    flex: 0.494;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+    padding-top: 14px;
+
+    h1 {
+        width: fit-content;
+        position: absolute;
+        top: -26px;
+        left: 28px;
+        background: #393A3B;
+        padding: 8px;
+        font-size: 22px;
+        color: whitesmoke;
+        text-transform: capitalize;
+    }
+}
+
+
+.recent-calory-intake {
+    color: black;
+    text-decoration: none;
+}
+
+
+.accordion-wrapper {
+    width: 75%;
+    right: 8px;
+}
+
+.today-intake {
+    left: 8px;
+}

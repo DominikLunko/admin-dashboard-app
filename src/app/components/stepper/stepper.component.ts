@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 import { DataStateService } from 'src/app/services/data-state.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -8,52 +9,68 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './stepper.component.html',
   styleUrls: ['./stepper.component.scss']
 })
-export class StepperComponent implements OnInit {
+export class StepperComponent implements OnInit, OnDestroy {
+
+  private destroySub = new Subject<void>();
 
   disabled: boolean = false;
+  idx!: number;
   constructor(private router: Router,
     public dataStateService: DataStateService,
     private userService: UserService
-    ) { }
+    ) { 
+    }
 
-  stepperData: {index: number, title: string, url: string, disabled: boolean}[] = [];
+  stepperData: {index: number, title: string, url: string, needAuth: boolean}[] = [];
   ngOnInit(): void {
     this.stepperData  = [
       {
         index: 0,
-        title: 'PERSONAL DATA',
+        title: 'PERSONAL DATA & ANALYTICS',
         url: 'personal-data',
-        disabled: this.userService.currentUser.getValue() !== null ? false : true 
+        needAuth: true
       },
       {
         index: 1,
         title: 'EXERCISES',
         url: 'exercises',
-        disabled: false
+        needAuth: false
       },
       {
         index: 2,
         title: 'MEALS',
         url: 'meals',
-        disabled: false
+        needAuth: false
       },
       {
         index: 3,
-        title: 'WORKOUT_PLAN',
+        title: 'CREATE WORKOUT PLAN',
         url: 'workout-plan',
-        disabled: this.userService.currentUser.getValue() !== null ? false : true 
-      },
-      {
+        needAuth: true
+      }
+      /*{
         index: 4,
         title: 'ANALYTICS',
         url: 'analytics',
-        disabled: this.userService.currentUser.getValue() !== null ? false : true 
-      },
+        needAuth: true
+      }*/
     ]
-    this.router.navigate(['exercises']);
-    this.dataStateService.selectedStepIndex.next(1);
+    this.userService.currentUser.subscribe(user => {
+      if (user !== null) {
+        this.disabled = false;
+      } else {
+        this.disabled = true;
+      }
+    })
+    this.dataStateService.selectedStepIndex.subscribe(index => {
+      this.idx = index;
+    })
+    
   }
-  
+  ngOnDestroy(): void {
+    this.destroySub.next();
+    this.destroySub.complete();
+  }
   onTabChange(event: any): void {
     let route: string = this.stepperData[event.index].url;
     this.dataStateService.currentUrl.next(route);

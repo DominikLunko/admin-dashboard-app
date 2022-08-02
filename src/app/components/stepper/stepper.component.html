@@ -2,10 +2,10 @@
     <mat-tab-group class="tab-group"
                    mat-align-tabs="start"
                    (selectedTabChange)="onTabChange($event)"
-                   [selectedIndex]="dataStateService.selectedStepIndex.getValue()">
-      <mat-tab *ngFor="let step of stepperData" [disabled]="step.disabled">
+                   [(selectedIndex)]="idx">
+      <mat-tab *ngFor="let step of stepperData" [disabled]="step.needAuth && disabled">
         <ng-template mat-tab-label>
-          <div *ngIf="step.disabled" matTooltip="Login required!" class="tooltip">
+          <div *ngIf="step.needAuth && disabled" matTooltip="Login required!" class="tooltip">
           </div>
           <span class="tab-index">{{step.index + 1}}</span>
           <p class="mb-0 mx-2 stepper-text">{{step.title}}</p>

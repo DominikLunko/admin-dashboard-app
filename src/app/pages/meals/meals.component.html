@@ -1,1 +1,93 @@
-<p>meals works!</p>
+<!-- SEARCH FOOD -->
+<div class="search-wrapper">
+    <!-- SEARCH BOX -->
+    <div class="search-box">
+      <input
+        matInput
+        [(ngModel)]="nutrientName"
+        placeholder="Start typing to search food"
+      />
+    </div>
+    <!-- SELECT PARAMETERS -->
+    <div class="search-parameters-box">
+      <p>Select macros:</p>
+      <section class="example-section">
+        <mat-checkbox class="example-margin" [(ngModel)]="showMacros.protein">Protein</mat-checkbox>
+        <mat-checkbox class="example-margin" [(ngModel)]="showMacros.carbohydrate">Carbs</mat-checkbox>
+        <mat-checkbox class="example-margin" [(ngModel)]="showMacros.fat">Fat</mat-checkbox>
+        <mat-checkbox class="example-margin" [(ngModel)]="showMacros.fiber">Fiber</mat-checkbox>
+      </section>
+    </div>
+    <!-- CATEGORY SECTION -->
+    <div class="row caterogy-select-wrapper">
+      <mat-form-field appearance="fill" class="p-2 pb-0">
+        <mat-label style="color: whitesmoke">Categories</mat-label>
+        <mat-select [(ngModel)]="selectedCategories" multiple color="primary">
+          <mat-option
+            *ngFor="let category of categoryList"
+            [value]="category"
+            >{{ category }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+      <button (click)="clearSelect()">x</button>
+    </div>
+    <!-- SEARCH BUTTON -->
+    <div class="btn-wrapper">
+      <button mat-raised-button sm grey type="submit" color="primary" (click)="startSearch()">SEARCH</button>
+    </div>
+</div>
+
+
+<div class="search-wrapper column mt-3" *ngIf="nutrientList.length > 0">
+  <div class="nutrient-list">
+    <!-- Food card -->
+    <div
+      class="nutrient-card p-2 m-2 pt-3 mt-3"
+      *ngFor="let nutrient of nutrientList; let idx = index">
+      <div class="nutrient-title-wrapper">
+        <div>
+          <h4>{{ nutrient.food.toUpperCase() }}</h4>
+        </div>
+        <div
+          class="favourite-wrapper"
+          *ngIf="userService.currentUser.getValue()">
+          <h5 [ngStyle]="{color: favouriteNutrients?.includes(nutrient._id) ? '#3f51b5' : 'whitesmoke'}">
+            {{favouriteNutrients?.includes(nutrient._id) ? "Remove from" : "Add to"}} favourites</h5>
+          <mat-icon
+            [ngStyle]="{color: favouriteNutrients.includes(nutrient._id) ? '#3f51b5' : 'whitesmoke'}"
+            (click)="addToFavourite(nutrient._id)">control_point</mat-icon>
+        </div>
+        <h3 class="category">Category: {{ nutrient.category }}</h3>
+        <div class="calories-wrapper">
+          <h3>CALORIES: {{ nutrient.calories }}</h3>
+          <h3>GRAMS: {{ nutrient.grams }}</h3>
+          <h3>MEASURE: {{ nutrient.measure }}</h3>
+        </div>
+        
+        <div class="macros-wrapper">
+          <h3 class="px-2">Macros:</h3>
+          <p *ngIf="showMacros.protein">
+            PROTEIN: {{ nutrient.protein ? nutrient.protein : "0" }}g
+          </p>
+          <p *ngIf="showMacros.carbohydrate">
+            CARBS: {{ nutrient.carbs ? nutrient.carbs : "0" }}g
+          </p>
+          <p *ngIf="showMacros.fiber">
+            FIBERS: {{ nutrient.fiber ? nutrient.fiber : "0" }}g
+          </p>
+          <p *ngIf="showMacros.fat">
+            FAT: {{ nutrient.fat ? nutrient.fat : "0" }}g
+          </p>
+        </div>
+      </div>
+      <div class="daily-calories-wrapper">
+        <button class="mx-2" mat-raised-button sm color="primary" (click)="addToDailyCalories(nutrient.calories)">Add to daily calories</button>
+      </div>
+    </div>
+  </div>
+  <!-- LOAD MORE -->
+  <div class="load-more-wrapper" *ngIf="showLoadMore">
+    <h3 (click)="loadMore()">Load more...</h3>
+  </div>
+</div>

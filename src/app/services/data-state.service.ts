@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class DataStateService {
 
   currentUrl: BehaviorSubject<string> = new BehaviorSubject<string>('exercises');
   selectedStepIndex: BehaviorSubject<number> = new BehaviorSubject<number>(0);
-  
+
   loading: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   constructor(
     private _snackBar: MatSnackBar
@@ -19,4 +20,5 @@ export class DataStateService {
       duration: 3000
     });
   }
+  
 }

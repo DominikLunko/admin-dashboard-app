@@ -1,0 +1,172 @@
+h3, h4, p {
+    color: whitesmoke;
+}
+
+.search-wrapper {
+    display: flex;
+    align-content: center;
+    justify-content: space-evenly;
+    box-shadow: rgb(0 0 0 / 25%) 0px 54px 55px, rgb(0 0 0 / 12%) 0px -12px 30px, rgb(0 0 0 / 12%) 0px 4px 6px, rgb(0 0 0 / 17%) 0px 12px 13px, rgb(0 0 0 / 9%) 0px -3px 5px;
+    transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 2px;
+    border-radius: 4px;
+}
+.column {
+    flex-direction: column;
+}
+.nutrient-list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.search-box {
+    width: 20%;
+    display: flex;
+    align-items: center;
+
+    input {
+        padding-left: 12px;
+        width: 100%;
+        height: 80%;
+        border-radius: 50px;
+        border: none;
+        font-size: 16px;
+        
+    }
+}
+
+.search-parameters-box {
+    flex: 0.5;
+    display: flex;
+    align-items: center;
+
+    p {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 0px;
+    }
+}
+
+.example-section {
+    margin-left: 24px;
+    display: flex;
+    align-content: center;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 60px;
+
+    mat-checkbox {
+        margin-right: 16px;
+        color: whitesmoke;
+    }
+  }
+
+  .btn-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .nutrient-card {
+    width: 28%;
+    box-shadow: rgb(0 0 0 / 25%) 0px 54px 55px, rgb(0 0 0 / 12%) 0px -12px 30px, rgb(0 0 0 / 12%) 0px 4px 6px, rgb(0 0 0 / 17%) 0px 12px 13px, rgb(0 0 0 / 9%) 0px -3px 5px;
+    transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 2px;
+    border-radius: 4px;
+  }
+  .nutrient-title-wrapper {
+    display: flex;
+    flex-direction: column;
+    h4 {
+        font-size:16px;
+        text-align: center;
+        text-decoration: underline;
+    }
+  }
+
+  .load-more-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    h3 {
+        cursor: pointer;
+        font-size:15px;
+    }
+  }
+  .favourite-wrapper {
+    margin-right: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+
+    h5 {
+        padding: 8px;
+        margin: 0;
+        font-size: 14px;
+        text-align: end;
+    }
+    mat-icon {
+        cursor: pointer;
+    }
+  }
+
+.caterogy-select-wrapper {
+    align-items: center;
+    justify-content: center;
+
+    button, mat-form-field {
+        flex: 0.5
+    }
+    button {
+        border: none;
+        background: transparent;
+        color: whitesmoke;
+        font-size: 21px;
+        font-weight: bold;
+        margin-top: -10px
+    }
+}
+
+.calories-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.macros-wrapper {
+    position:relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid whitesmoke;
+    margin: 16px 8px 16px 8px;
+    flex-wrap: wrap;
+
+    h3 {
+        position: absolute;
+        top: -15px;
+        left: 12px;
+        background-color: #393A3B;
+    }
+    p {
+        margin: 16px 8px 8px 16px;
+    }
+}
+
+.category {
+    text-align: center;
+}
+
+.daily-calories-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+::ng-deep .mat-form-field.mat-focused .mat-form-field-ripple{
+    background-color: whitesmoke;
+}
+::ng-deep .mat-form-field-appearance-legacy .mat-form-field-underline {
+    background-color: whitesmoke;
+}

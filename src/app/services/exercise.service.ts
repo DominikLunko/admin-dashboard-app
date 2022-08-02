@@ -13,7 +13,12 @@ export class ExerciseService {
   getAllBodyParts(): Observable<any> {
     return this.http.get<any>(`${environment.baseUrl}/exercise-group/allBodyParts`, { withCredentials: true });
   }
+
+  // getCountOfExercisesByBodyPart(bodyPart: string): Observable<any> {
+  //   return this.http.post<any>(`${environment.baseUrl}/exercise-group/count-exercise`, {bodyPart})
+  // }
+
   getExercisesByBodyPart(bodyPart: string, skip: number): Observable<any> {
-    return this.http.get<any>(`${environment.baseUrl}/exercise-group/${bodyPart}/${skip}`);
+    return this.http.post<any>(`${environment.baseUrl}/exercise-group/exercise-list`, {bodyPart, skip});
   }
 }
