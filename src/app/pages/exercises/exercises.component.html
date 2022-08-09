@@ -19,6 +19,6 @@
     <p class="p-1 mb-1" style="color: whitesmoke">TARGET:  {{exercise.target}}</p>
   </div>
 </div>
-<div *ngIf="showLoadMore" class="row-center m-3 p-3">
+<div *ngIf="showLoadMore && exercises.length > 0" class="row-center m-3 p-3 ">
   <p class="load-more" (click)="loadMore()">Load more...</p>
 </div>

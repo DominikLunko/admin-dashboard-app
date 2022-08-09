@@ -43,8 +43,8 @@ h3, h4, p {
     align-items: center;
 
     p {
-        font-size: 18px;
-        font-weight: bold;
+        font-size: 16px;
+        font-weight: 300;
         margin-bottom: 0px;
     }
 }
@@ -169,4 +169,7 @@ h3, h4, p {
 }
 ::ng-deep .mat-form-field-appearance-legacy .mat-form-field-underline {
     background-color: whitesmoke;
+}
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+    background-color: #3F51B5;
 }

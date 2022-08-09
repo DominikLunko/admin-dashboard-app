@@ -23,6 +23,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 // IMPORT COMPONENTS AND PAGES
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -70,7 +71,8 @@ import { PersonalDataPopupComponent } from './pages/personal-data/personal-data-
     MatDialogModule,
     MatSelectModule,
     MatCheckboxModule,
-    MatExpansionModule
+    MatExpansionModule,
+    DragDropModule
   ],
   providers: [
   ],

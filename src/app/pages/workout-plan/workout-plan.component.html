@@ -1,1 +1,77 @@
-<p>workout-plan works!</p>
+<div class="body-section personal-data-content">
+  <div class="create-plan-wrapper">
+    <h1 class="create-plan">CREATE WORKOUT PLAN</h1>
+
+    <div class="search-wrapper">
+      <h2>Drag&drop the exercise into the training day</h2>
+      <div style="display: flex; align-items: center; justify-content: center">
+        <button style="left: 12px !important;position: absolute;"
+                mat-raised-button sm color="primary"
+                (click)="createNewWorkout()">New Workout</button>
+        <button style="left: 160px !important;position: absolute;"
+                mat-raised-button sm color="primary"
+                (click)="saveWorkout()">Save Workout</button>
+        <input
+          matInput
+          [(ngModel)]="exerciseName"
+          placeholder="Start typing..."
+        />
+        <button
+          mat-raised-button
+          sm
+          color="primary"
+          class="mx-3"
+          (click)="callFetchExercises()"
+        >
+          Search
+        </button>
+      </div>
+    </div>
+  </div>
+  <input  
+          matInput
+          [(ngModel)]="workoutPlanModel.title"
+          placeholder="Enter workout title..."
+        />
+  <div class="main-wrapper">
+    <div class="example-container" cdkDropListGroup>
+      <div
+        class="each-day"
+        [ngClass]="{ 'result-section': day.title == 'Results' }"
+        *ngFor="let day of workoutPlanModel.workoutDays"
+      >
+        <div *ngIf="day.title !== 'Results'; else results">
+          <h2>{{ day.title }}</h2>
+          <div
+            class="drop-place"
+            cdkDropList
+            [cdkDropListData]="day.rows"
+            (cdkDropListDropped)="drop($event)"
+          >
+            <div class="example-box" *ngFor="let item of day.rows" cdkDrag>
+              <span>{{ item.exerciseName }}</span>
+              <span>Weight: {{ item.weight }}</span>
+              <span>Reps: {{ item.reps }}</span>
+            </div>
+          </div>
+        </div>
+        <ng-template #results>
+          <h2>{{ day.title }}</h2>
+          <div
+            class="drop-place"
+            cdkDropList
+            [cdkDropListData]="day.rows"
+            (cdkDropListDropped)="drop($event)"
+          >
+            <div class="example-box" *ngFor="let item of day.rows" cdkDrag>
+              <span>{{ item.exerciseName }}</span>
+              <span>Weight: {{ item.weight }}</span>
+              <span>Reps: {{ item.reps }}</span>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -38,7 +38,7 @@ export class StepperComponent implements OnInit, OnDestroy {
       },
       {
         index: 2,
-        title: 'MEALS',
+        title: 'NUTRIENTS',
         url: 'meals',
         needAuth: false
       },

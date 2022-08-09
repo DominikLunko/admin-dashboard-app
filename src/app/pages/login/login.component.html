@@ -1,6 +1,6 @@
   <div class="login-card mt-5 p-4">
     <mat-card-header class="row-center">
-      <mat-card-title>Login</mat-card-title>
+      <mat-card-title style="color: whitesmoke; font-weight: bold">Login</mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <form class="example-form" #loginForm="ngForm">
@@ -37,7 +37,7 @@
             [disabled]="loginForm.invalid"
             type="submit"
             (click)="login()"
-            color="accent"
+            color="primary"
           >
             Login
           </button>

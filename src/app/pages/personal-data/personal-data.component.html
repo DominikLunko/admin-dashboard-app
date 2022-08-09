@@ -130,17 +130,17 @@
       </div>
     </div>
     <div class="row mx-3">
-      <div class="info-wrapper mt-5 mb-5" style="flex: 0.45; border: none" *ngIf="user.user_analytics?.favourite_nutrients">
+      <div class="info-wrapper mt-5 mb-5" style="flex: 0.45; border: none" *ngIf="favouriteNutrientsArray.length > 0">
         <h1>Favourite nutrients</h1>
         <p class="m-2" *ngFor="let nutrient of favouriteNutrientsArray; let idx = index">{{idx + 1}}. {{nutrient.food}}</p>
       </div>
-      <div class="info-wrapper mt-5 mb-5" style="flex: 0.55; border: none;" *ngIf="user.user_analytics?.favourite_nutrients">
+      <div class="info-wrapper mt-5 mb-5" style="flex: 0.55; border: none;">
         <h1>Daily calorie intake</h1>
           <div class="today-intake m-4">
             <h3>Today calory intake: {{todayDailyCaloriesIntake?.calories ? todayDailyCaloriesIntake?.calories : '0'}} </h3>
           </div>
-            <mat-accordion class="accordion-wrapper">
-              <mat-expansion-panel>
+            <mat-accordion class="accordion-wrapper m-2">
+              <mat-expansion-panel [expanded]="true">
                 <mat-expansion-panel-header>
                   <mat-panel-title>
                     Recent calory intakes
@@ -152,6 +152,16 @@
               </mat-expansion-panel>
             </mat-accordion>
       </div>
+      <!-- WORKOUT PLANS -->
+        <div class="info-wrapper mt-5 mb-5" style="flex: 0.45; border: none" *ngIf="favouriteNutrientsArray.length > 0">
+          <h1>Workout plans</h1>
+          <div *ngFor="let workoutPlan of workoutPlans; let idx = index" style="display: flex; align-items: center; justify-content: space-around">
+            <button mat-raised-button sm grey
+            class="m-2" style="width: 80%"
+            (click)="setCurrentWorkoutPlan(workoutPlan)">{{idx + 1}}. {{workoutPlan.title}}</button>
+            <button class="px-2" mat-raised-button sm grey (click)="deleteWorkoutPlan(workoutPlan.uniqueId)">Delete</button>
+          </div>
+        </div>
     </div>
   </div>
 </div>

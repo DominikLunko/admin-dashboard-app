@@ -70,4 +70,13 @@ export class HttpService {
     const todayDate: Date = new Date();
     return this.http.post<any>(`${environment.baseUrl}/users/daily-calory-intake`, {calories, todayDate}, { withCredentials: true });
   }
+  getWorkouts(exerciseName: string): Observable<any> {
+    return this.http.get<any>(`${environment.baseUrl}/workouts/get-workouts-by-name/${exerciseName}`, { withCredentials: true });
+  }
+  saveWorkout(workout: any): Observable<any> {
+    return this.http.post<any>(`${environment.baseUrl}/users/save-workout-plan`, {workout}, { withCredentials: true });
+  }
+  deleteWorkout(workoutId: string): Observable<any> {
+    return this.http.delete<any>(`${environment.baseUrl}/users/delete-workout-plan/${workoutId}`, { withCredentials: true });
+  }
 }

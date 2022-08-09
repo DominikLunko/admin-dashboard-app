@@ -139,6 +139,7 @@ export class MealsComponent implements OnInit, OnDestroy {
     this.dataStateService.loading.next(true);
     this.httpService.addToDailyCaloryIntake(calories).subscribe((response) => {
       if (response.success) {
+        this.dataStateService.openSnackBar(response.message, 'OK');
       } else {
         this.dataStateService.openSnackBar(response.message, 'OK');
       }
