@@ -26,7 +26,6 @@ export class WorkoutPlanComponent implements OnInit {
     this.dataStateService.currentWorkoutPlan.subscribe(workoutPlan => {
       if (workoutPlan !== null) {
         this.workoutPlanModel = workoutPlan;
-        this.workoutPlanModel.workoutDays.push({title: 'Results', rows: []})
       } else {
         this.workoutPlanModel = new WorkoutPlan({workoutDays: [
           {title: 'Monday', rows: []},
@@ -40,6 +39,9 @@ export class WorkoutPlanComponent implements OnInit {
         ], title: 'New workout', uniqueId: 'id' + Math.random().toString(16).slice(2)});
       }
     })
+    if (this.workoutPlanModel.workoutDays.find(item => item.title != 'Results')) {
+      this.workoutPlanModel.workoutDays.push({title: 'Results', rows: []})
+    }
     setTimeout(() => {
       this.dataStateService.selectedStepIndex.next(3);
     })
@@ -88,7 +90,8 @@ export class WorkoutPlanComponent implements OnInit {
   }
   saveWorkout() {
     let workoutDto = JSON.parse(JSON.stringify(this.workoutPlanModel));
-    workoutDto.workoutDays.splice(workoutDto.workoutDays.length-1, 1);
+    workoutDto.workoutDays = workoutDto.workoutDays
+    .filter((item: any) => item.title != 'Results')
     console.log(workoutDto)
     this.dataStateService.loading.next(true);
     this.httpService.saveWorkout(workoutDto).subscribe((response) => {
