@@ -14,22 +14,24 @@
         ACTIVITY LEVEL =
         {{ user.activity_level ? user.activity_level : "Not Entered" }}
       </p>
-      <button mat-raised-button sm color="primary" (click)="editData()">EDIT DATA</button>
+      <button mat-raised-button sm color="primary" (click)="editData()">
+        EDIT DATA
+      </button>
     </div>
     <div class="row mx-3">
       <!-- BMI DATA -->
       <div class="p-3 bmi-data-wrapper">
         <h1>Body mass index</h1>
         <div class="bmi-data pt-2">
-          <div class="row column" style="text-align:center">
+          <div class="row column" style="text-align: center">
             <h3 class="mb-2">BMI</h3>
             <p>{{ user?.user_analytics?.bmi }}</p>
           </div>
-          <div class="row column" style="text-align:center">
+          <div class="row column" style="text-align: center">
             <h3 class="mb-2">Healthy bmi range</h3>
             <p>{{ user?.user_analytics?.healthy_bmi_range }}</p>
           </div>
-          <div class="row column" style="text-align:center">
+          <div class="row column" style="text-align: center">
             <h3 class="mb-2">Health</h3>
             <p>{{ user?.user_analytics?.health }}</p>
           </div>
@@ -49,7 +51,6 @@
       </div>
     </div>
     <div class="row mx-3">
-      
       <div class="info-wrapper">
         <h3>Extreme weight gain</h3>
         <p>
@@ -108,7 +109,7 @@
           CALORY= {{ user.user_analytics?.weight_goals?.weight_loss?.calory }}
         </p>
         <p>
-          WEIGHT= -{{user.user_analytics?.weight_goals?.weight_loss?.weight }}
+          WEIGHT= -{{ user.user_analytics?.weight_goals?.weight_loss?.weight }}
         </p>
       </div>
       <div class="info-wrapper">
@@ -130,38 +131,81 @@
       </div>
     </div>
     <div class="row mx-3">
-      <div class="info-wrapper mt-5 mb-5" style="flex: 0.45; border: none" *ngIf="favouriteNutrientsArray.length > 0">
+      <div
+        class="info-wrapper mt-5 mb-5"
+        style="flex: 0.45; border: none"
+        *ngIf="favouriteNutrientsArray.length > 0"
+      >
         <h1>Favourite nutrients</h1>
-        <p class="m-2" *ngFor="let nutrient of favouriteNutrientsArray; let idx = index">{{idx + 1}}. {{nutrient.food}}</p>
+        <p
+          class="m-2"
+          *ngFor="let nutrient of favouriteNutrientsArray; let idx = index"
+        >
+          {{ idx + 1 }}. {{ nutrient.food }}
+        </p>
       </div>
-      <div class="info-wrapper mt-5 mb-5" style="flex: 0.55; border: none;">
+      <div class="info-wrapper mt-5 mb-5" style="flex: 0.55; border: none">
         <h1>Daily calorie intake</h1>
-          <div class="today-intake m-4">
-            <h3>Today calory intake: {{todayDailyCaloriesIntake?.calories ? todayDailyCaloriesIntake?.calories : '0'}} </h3>
-          </div>
-            <mat-accordion class="accordion-wrapper m-2">
-              <mat-expansion-panel [expanded]="true">
-                <mat-expansion-panel-header>
-                  <mat-panel-title>
-                    Recent calory intakes
-                  </mat-panel-title>
-                </mat-expansion-panel-header>
-                <h3 *ngFor="let calorie of recentCaloriesIntake" 
-                    class="recent-calory-intake">
-                    Date: {{calorie.date}} -> Calories: {{calorie.calories}}</h3>
-              </mat-expansion-panel>
-            </mat-accordion>
+        <div class="today-intake m-4">
+          <h3>
+            Today calory intake:
+            {{
+              todayDailyCaloriesIntake?.calories
+                ? todayDailyCaloriesIntake?.calories
+                : "0"
+            }}
+          </h3>
+        </div>
+        <mat-accordion class="accordion-wrapper m-2">
+          <mat-expansion-panel [expanded]="true">
+            <mat-expansion-panel-header>
+              <mat-panel-title> Recent calory intakes </mat-panel-title>
+            </mat-expansion-panel-header>
+            <h3
+              *ngFor="let calorie of recentCaloriesIntake"
+              class="recent-calory-intake"
+            >
+              Date: {{ calorie.date }} -> Calories: {{ calorie.calories }}
+            </h3>
+          </mat-expansion-panel>
+        </mat-accordion>
       </div>
       <!-- WORKOUT PLANS -->
-        <div class="info-wrapper mt-5 mb-5" style="flex: 0.45; border: none" *ngIf="favouriteNutrientsArray.length > 0">
-          <h1>Workout plans</h1>
-          <div *ngFor="let workoutPlan of workoutPlans; let idx = index" style="display: flex; align-items: center; justify-content: space-around">
-            <button mat-raised-button sm grey
-            class="m-2" style="width: 80%"
-            (click)="setCurrentWorkoutPlan(workoutPlan)">{{idx + 1}}. {{workoutPlan.title}}</button>
-            <button class="px-2" mat-raised-button sm grey (click)="deleteWorkoutPlan(workoutPlan.uniqueId)">Delete</button>
-          </div>
+      <div
+        class="info-wrapper mt-5 mb-5"
+        style="flex: 0.45; border: none"
+        *ngIf="favouriteNutrientsArray.length > 0"
+      >
+        <h1>Workout plans</h1>
+        <div
+          *ngFor="let workoutPlan of workoutPlans; let idx = index"
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+          "
+        >
+          <button
+            mat-raised-button
+            sm
+            grey
+            class="m-2"
+            style="width: 80%"
+            (click)="setCurrentWorkoutPlan(workoutPlan)"
+          >
+            {{ idx + 1 }}. {{ workoutPlan.title }}
+          </button>
+          <button
+            class="px-2"
+            mat-raised-button
+            sm
+            grey
+            (click)="deleteWorkoutPlan(workoutPlan.uniqueId)"
+          >
+            Delete
+          </button>
         </div>
+      </div>
     </div>
   </div>
 </div>

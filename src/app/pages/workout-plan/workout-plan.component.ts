@@ -27,16 +27,7 @@ export class WorkoutPlanComponent implements OnInit {
       if (workoutPlan !== null) {
         this.workoutPlanModel = workoutPlan;
       } else {
-        this.workoutPlanModel = new WorkoutPlan({workoutDays: [
-          {title: 'Monday', rows: []},
-          {title: 'Tuesday', rows: []},
-          {title: 'Wednesday', rows: []},
-          {title: 'Thursday', rows: []},
-          {title: 'Friday', rows: []},
-          {title: 'Saturday', rows: []},
-          {title: 'Sunday', rows: []},
-          {title: 'Results', rows: []},
-        ], title: 'New workout', uniqueId: 'id' + Math.random().toString(16).slice(2)});
+        this.createNewWorkout();
       }
     })
     if (this.workoutPlanModel.workoutDays.find(item => item.title != 'Results')) {
@@ -61,7 +52,7 @@ export class WorkoutPlanComponent implements OnInit {
       {title: 'Saturday', rows: []},
       {title: 'Sunday', rows: []},
       {title: 'Results', rows: []},
-    ], title: 'New workout', uniqueId: 'id' + Math.random().toString(16).slice(2)});
+    ], title: 'New workout', _id: 'id' + Math.random().toString(16).slice(2)});
   }
   fetchWorkouts(): void {
     this.dataStateService.loading.next(true);

@@ -4,13 +4,32 @@
 
     <div class="search-wrapper">
       <h2>Drag&drop the exercise into the training day</h2>
-      <div style="display: flex; align-items: center; justify-content: center">
-        <button style="left: 12px !important;position: absolute;"
-                mat-raised-button sm color="primary"
-                (click)="createNewWorkout()">New Workout</button>
-        <button style="left: 160px !important;position: absolute;"
-                mat-raised-button sm color="primary"
-                (click)="saveWorkout()">Save Workout</button>
+      <div
+        style="
+          display: flex;
+          align-items: center;
+        "
+      >
+        <div style="width: 400px;display: flex; align-items: center; justify-content: flex-start">
+          <button
+            mat-raised-button
+            sm
+            color="primary"
+            class="mx-3"
+            (click)="createNewWorkout()"
+          >
+            New Workout
+          </button>
+          <button
+            mat-raised-button
+            sm
+            color="primary"
+            class="mx-3"
+            (click)="saveWorkout()"
+          >
+            Save Workout
+          </button>
+        </div>
         <input
           matInput
           [(ngModel)]="exerciseName"
@@ -28,11 +47,11 @@
       </div>
     </div>
   </div>
-  <input  
-          matInput
-          [(ngModel)]="workoutPlanModel.title"
-          placeholder="Enter workout title..."
-        />
+  <input
+    matInput
+    [(ngModel)]="workoutPlanModel.title"
+    placeholder="Enter workout title..."
+  />
   <div class="main-wrapper">
     <div class="example-container" cdkDropListGroup>
       <div
@@ -74,4 +93,3 @@
     </div>
   </div>
 </div>
-

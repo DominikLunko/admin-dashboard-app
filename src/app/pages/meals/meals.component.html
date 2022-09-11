@@ -81,7 +81,7 @@
           </p>
         </div>
       </div>
-      <div class="daily-calories-wrapper">
+      <div class="daily-calories-wrapper" *ngIf="userService.currentUser.getValue()">
         <button class="mx-2" mat-raised-button sm color="primary" (click)="addToDailyCalories(nutrient.calories)">Add to daily calories</button>
       </div>
     </div>

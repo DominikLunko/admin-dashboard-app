@@ -74,7 +74,6 @@ export class PersonalDataComponent implements OnInit, OnDestroy {
     this.destroySub.complete();
   }
   selectCalorieProgram(calorie: number) {
-
   }
   getUserAnalytics(): void {
     this.dataStateService.loading.next(true);
@@ -143,7 +142,7 @@ export class PersonalDataComponent implements OnInit, OnDestroy {
     this.dataStateService.loading.next(true);
     this.httpService.deleteWorkout(workoutId).subscribe((response) => {
       if (response.success) {
-        this.workoutPlans = this.workoutPlans.filter(workoutPlan => workoutPlan.uniqueId != workoutId)
+        this.workoutPlans = this.workoutPlans.filter(workoutPlan => workoutPlan._id != workoutId)
         this.dataStateService.openSnackBar(response.message, 'OK');
       } else {
         this.dataStateService.openSnackBar(response.message, 'OK');
