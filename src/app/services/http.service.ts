@@ -4,11 +4,12 @@ import { Observable, of } from 'rxjs';
 import { User } from '../models/user';
 import { environment } from 'src/environments/environment';
 import { CaloryGainWeight, DailyCaloryModel, UserAnalytics } from '../models/dailyCalory.model';
+import { UserService } from './user.service';
 @Injectable({
   providedIn: 'root',
 })
 export class HttpService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private userService: UserService) {}
   
   // RAPID API
   calculateBmi(user: User): Observable<any> {
@@ -46,13 +47,13 @@ export class HttpService {
     );
   }
   updateUser(user: User): Observable<any> {
-    return this.http.put<any>(`${environment.baseUrl}/users/update-user`, user, { withCredentials: true });
+    return this.http.put<any>(`${environment.baseUrl}/users/update-user`, user);
   }
   getUserAnalytics(): Observable<any> {
-    return this.http.get<any>(`${environment.baseUrl}/users/get-user-analytics`, { withCredentials: true });
+    return this.http.get<any>(`${environment.baseUrl}/users/get-user-analytics/${this.userService.currentUser.getValue()?._id}`);
   }
   updateUserAnalytics(user_analytics: UserAnalytics): Observable<any> {
-    return this.http.post<any>(`${environment.baseUrl}/users/save-user-analytics`, user_analytics, { withCredentials: true });
+    return this.http.post<any>(`${environment.baseUrl}/users/save-user-analytics/${this.userService.currentUser.getValue()?._id}`, user_analytics);
   }
   // GET CATEGORIES
   getCategories(): Observable<any> {
@@ -64,19 +65,19 @@ export class HttpService {
   }
   // ADD TO FAVOURITE
   addToFavourite(nutrientId: string): Observable<any> {
-    return this.http.patch<any>(`${environment.baseUrl}/users/${nutrientId}/add-to-favourite`, {}, { withCredentials: true });
+    return this.http.patch<any>(`${environment.baseUrl}/users/${nutrientId}/add-to-favourite/${this.userService.currentUser.getValue()?._id}`, {});
   }
   addToDailyCaloryIntake(calories: number): Observable<any> {
     const todayDate: Date = new Date();
-    return this.http.post<any>(`${environment.baseUrl}/users/daily-calory-intake`, {calories, todayDate}, { withCredentials: true });
+    return this.http.post<any>(`${environment.baseUrl}/users/daily-calory-intake/${this.userService.currentUser.getValue()?._id}`, {calories, todayDate});
   }
   getWorkouts(exerciseName: string): Observable<any> {
     return this.http.get<any>(`${environment.baseUrl}/workouts/get-workouts-by-name/${exerciseName}`, { withCredentials: true });
   }
   saveWorkout(workout: any): Observable<any> {
-    return this.http.post<any>(`${environment.baseUrl}/users/save-workout-plan`, {workout}, { withCredentials: true });
+    return this.http.post<any>(`${environment.baseUrl}/users/save-workout-plan/${this.userService.currentUser.getValue()?._id}`, {workout});
   }
   deleteWorkout(workoutId: string): Observable<any> {
-    return this.http.delete<any>(`${environment.baseUrl}/users/delete-workout-plan/${workoutId}`, { withCredentials: true });
+    return this.http.delete<any>(`${environment.baseUrl}/users/delete-workout-plan/${workoutId}/${this.userService.currentUser.getValue()?._id}`);
   }
 }

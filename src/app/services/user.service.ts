@@ -39,6 +39,6 @@ export class UserService {
     return this.http.get<any>(`${environment.baseUrl}/users/signout`);
   }
   refreshToken(): Observable<any> {
-    return this.http.get<any>(`${environment.baseUrl}/users/refresh-token`, { withCredentials: true })
+    return this.http.get<any>(`${environment.baseUrl}/users/refresh-token/${this.currentUser.getValue()?._id}`)
   }
 }

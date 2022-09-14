@@ -135,7 +135,10 @@ export class MealsComponent implements OnInit, OnDestroy {
       this.dataStateService.loading.next(false);
     });
   }
-  addToDailyCalories(calories: number): void {
+  addToDailyCalories(calories: any): void {
+    if (typeof calories === 'string') {
+      calories = +(calories.replace(',',''));
+    }
     this.dataStateService.loading.next(true);
     this.httpService.addToDailyCaloryIntake(calories).subscribe((response) => {
       if (response.success) {

@@ -42,6 +42,9 @@ export class WorkoutPlanComponent implements OnInit {
   callFetchExercises(): void {
       this.fetchWorkouts();
   }
+  setCurrentWorkoutPlanToNull(): void {
+    this.dataStateService.currentWorkoutPlan.next(null)
+  }
   createNewWorkout(): void {
     this.workoutPlanModel = new WorkoutPlan({workoutDays: [
       {title: 'Monday', rows: []},
