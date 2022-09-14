@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'https://fitnesappapi.herokuapp.com/'
+  baseUrl: 'https://fitnesappapi.herokuapp.com'
 };
 
 /*
