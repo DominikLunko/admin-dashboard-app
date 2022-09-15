@@ -25,6 +25,7 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.userService.refreshToken().subscribe((response) => {
       if (response.success) {
+        console.log(response);
         this.userService.currentUser.next(response.user);
         this.dataStateService.selectedStepIndex.next(0);
         this.dataStateService.currentUrl.next('personal-data');
